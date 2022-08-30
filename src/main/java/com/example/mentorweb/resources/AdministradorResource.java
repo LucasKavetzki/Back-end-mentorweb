@@ -28,7 +28,6 @@ public class AdministradorResource {
 	private AdministradorService  service;
 	
 	
-	
 	// BUSCA POR ID
 	
 		@RequestMapping(value="/{id}", method=RequestMethod.GET)

@@ -32,7 +32,8 @@ public class MonitorDTO  implements Serializable {
 	@Email(message="Email inválido")
 	private String email;
 	
-	
+	private String senha;
+
 	
 	public MonitorDTO() {
 		
@@ -46,6 +47,7 @@ public MonitorDTO(Monitor obj) {
 	Disciplina = obj.getDisciplina();
 	ra = obj.getRA();
 	email = obj.getEmail();
+	senha = obj.getSenha();
 }
 
 
@@ -96,6 +98,16 @@ public String getEmail() {
 
 public void setEmail(String email) {
 	this.email = email;
+}
+
+
+public String getSenha() {
+	return senha;
+}
+
+
+public void setSenha(String senha) {
+	this.senha = senha;
 }
 
 

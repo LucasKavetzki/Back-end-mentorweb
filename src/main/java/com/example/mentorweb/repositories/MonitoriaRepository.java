@@ -8,4 +8,5 @@ import com.example.mentorweb.domain.Monitoria;
 @Repository
 public interface MonitoriaRepository extends JpaRepository<Monitoria, Integer> {
 
+
 }

@@ -11,67 +11,79 @@ public class MonitoriaNewDTO  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	private Integer id;
+		
+	private Monitor monid;
 	
 	@NotEmpty(message="Preenchimento obrigatório!")
-	private String Local;
+	private String local;
 	
 	@NotEmpty(message="Preenchimento obrigatório!")
-	private String Data;
+	private String data;
 	
 	@NotEmpty(message="Preenchimento obrigatório!")
-	private String Horario;
-	
+	private String horario;
 	
 	private Disciplina disciplina;
 	
-	
-	private Monitor monitor;
+	private String Nome;
+	private String email;
+	private String senha;	
 
 	
 	public MonitoriaNewDTO() {
 		
+		
 	}
 
 
-	public Integer getId() {
-		return id;
+
+
+	public Monitor getMonid() {
+		return monid;
 	}
 
 
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setMonid(Monitor monid) {
+		this.monid = monid;
 	}
+
 
 
 	public String getLocal() {
-		return Local;
+		return local;
 	}
+
 
 
 	public void setLocal(String local) {
-		Local = local;
+		this.local = local;
 	}
+
 
 
 	public String getData() {
-		return Data;
+		return data;
 	}
+
 
 
 	public void setData(String data) {
-		Data = data;
+		this.data = data;
 	}
+
 
 
 	public String getHorario() {
-		return Horario;
+		return horario;
 	}
+
 
 
 	public void setHorario(String horario) {
-		Horario = horario;
+		this.horario = horario;
 	}
+
 
 
 	public Disciplina getDisciplina() {
@@ -79,22 +91,59 @@ public class MonitoriaNewDTO  implements Serializable {
 	}
 
 
+
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
 
 
-	public Monitor getMonitor() {
-		return monitor;
+
+
+	public String getNome() {
+		return Nome;
 	}
 
 
-	public void setMonitor(Monitor monitor) {
-		this.monitor = monitor;
-	}
-	
-	
-	
-	
 
+
+	public void setNome(String nome) {
+		Nome = nome;
+	}
+
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+
+	
+	
 }
+
+
+
+

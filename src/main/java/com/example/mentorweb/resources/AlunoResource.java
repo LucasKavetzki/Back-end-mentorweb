@@ -48,6 +48,7 @@ public class AlunoResource {
 	
 	
 	// ATUALIZA O ID COM NOVAS INFORMAÇÕES
+	//@PreAuthorize("hasAnyRole('ALUNOS')")
 		@RequestMapping(value="/{id}",method=RequestMethod.PUT)
 			public ResponseEntity<Void> update(@RequestBody Aluno obj, @PathVariable Integer id  ){
 					obj.setId(id);

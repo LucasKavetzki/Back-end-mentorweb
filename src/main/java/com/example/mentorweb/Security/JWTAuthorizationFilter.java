@@ -32,11 +32,13 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 	@Override
 	protected void doFilterInternal( HttpServletRequest request,
 									HttpServletResponse response,
-									FilterChain chain) throws IOException, ServletException {
+									FilterChain chain
+									) throws IOException, ServletException {
 		
 		// PEGA O VALOR DO CABEÇALHO
 		String header = request.getHeader("Authorization");
-		
+
+				
 		
 		// VERIFICA SE OBJ É NULO
 		if(header != null && header.startsWith("Bearer ")) {
@@ -44,11 +46,15 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 			// SE OBJ DIFERENTE DE NULO LIBERA ACESSO
 			if(auth != null) {
 				SecurityContextHolder.getContext().setAuthentication(auth);
+
 			}
 				
 		}
+		
+
 		//CONTINUA A EXECUÇÃO NORMAL
 		chain.doFilter(request, response);
+
 	}
 
 	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request, String token) {

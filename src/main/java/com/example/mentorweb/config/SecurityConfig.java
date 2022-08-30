@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -25,7 +26,8 @@ import com.example.mentorweb.Security.JWTUtil;
 
 
 @Configuration
-@EnableWebSecurity				//EXTENDO UMA CLASSE 
+@EnableWebSecurity	
+@EnableGlobalMethodSecurity(prePostEnabled=true)	//EXTENDO UMA CLASSE 
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	
@@ -44,17 +46,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			
 		
 			//TUDO O QUE VIER DEPOIS DESSAS ANOTAÇÕES ESTÁ LIBERADO
-			"/h2-console/**"  
-						
+			"/monitoria/**",
+
+			"/h2-console/**" 
 	};
 	//DECLARANDO UM VETOR 
 	private static  final String[] PUBLIC_MATCHERS_GET = {
 				
 				//TUDO O QUE VIER DEPOIS DESSAS ANOTAÇÕES ESTÁ LIBERADO
-				"/monitoria/**",
+
 				"/disciplina/**",
 				"/administrador/**",
-				"/orientador/**"
+				"/orientador/**",
+				"/monitoria/**"
+
+
 		};
 	
 	//METODO DA CLASE WebSecurityConfigurerAdapter ELE PODE LANÇAR UMA EXCEÇÃO
@@ -64,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
             http.headers().frameOptions().disable();
         }
-		
+		http.headers().frameOptions().disable();
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()

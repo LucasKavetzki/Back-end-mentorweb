@@ -68,6 +68,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		String username = ((UserSS) auth.getPrincipal()).getUsername();
         String token = jwtUtil.generateToken(username);
         res.addHeader("Authorization", "Bearer " + token);
+		res.setHeader("Access-Control-Expose-Headers", "Authorization");
+
 	}
 	
 	private class JWTAuthenticationFailureHandler implements AuthenticationFailureHandler {
@@ -78,6 +80,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             response.setStatus(401);
             response.setContentType("application/json"); 
             response.getWriter().append(json());
+
         }
         
         private String json() {

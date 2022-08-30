@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.example.mentorweb.dto.MonitoriaDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -37,6 +38,7 @@ public class Monitoria implements Serializable {
 	private Disciplina disciplina;
 	
 	
+	 
 	@JsonManagedReference
 	@ManyToMany  //tipo de associação
 	@JoinTable(name="MONITORIA_ALUNO", // cria uma nova tabela no banco de dados
@@ -50,21 +52,30 @@ public class Monitoria implements Serializable {
 	private Monitor monitor;
 
 
+	
+	
 	public Monitoria() {
-		
+		super();
 	}
 
 	public Monitoria(Integer id, String local, String data, String horario, Disciplina disciplina,
 			Monitor monitor) {
 		super();
-		this.id = id;
-		Local = local;
-		Data = data;
-		Horario = horario;
-		this.disciplina = disciplina;
-		this.monitor = monitor;
+		
 	}
+	
 
+	public Monitoria(MonitoriaDTO objDTO)  {
+		super();
+		this.id = objDTO.getId();
+		Local = objDTO.getLocal();
+		Data = objDTO.getData();
+		Horario = objDTO.getHorario();
+			}
+		
+	
+
+	
 
 
 

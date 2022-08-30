@@ -10,22 +10,22 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.example.mentorweb.domain.Monitoria;
+import com.example.mentorweb.dto.MonitoriaDTO;
 import com.example.mentorweb.repositories.MonitoriaRepository;
 import com.example.mentorweb.services.exception.ObjectNotFoundException;
 
 @Service
 public class MonitoriaService {
 	
-	
 	@Autowired
 	private MonitoriaRepository repo;
 	
+		
 public Monitoria find(Integer id){
 	Optional<Monitoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 					"Objeto não encontrado! Id: " + id + ", Tipo: " + Monitoria.class.getName()));
-	//mostra msg de erro se o id não existir
-	
+	//mostra msg de erro se o id não existir	
 	
 }
 
@@ -39,11 +39,21 @@ public Page<Monitoria> findPage(Integer page, Integer linesPerPage, String order
 }
 
 
-//IMPLEMENTAÇÃO PUT, ATUALIZA AS INFORMAÇÕES
-	public Monitoria update(Monitoria obj){
-		find(obj.getId());
-			return repo.save(obj);
+	public Monitoria create(MonitoriaDTO obj) {
+		obj.setId(null);
+		Monitoria newObj = new Monitoria(obj);
+		return  repo.save(newObj);	
+		
 	}
+	
+	
+	
+	public void delete(Integer id) {
+		find(id);
+		 repo.deleteById(id);
+		}
+	
 
 
+	
 }

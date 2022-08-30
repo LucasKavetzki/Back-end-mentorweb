@@ -41,7 +41,7 @@ public class MonitorResource {
 	//ADICINA MONITOR
 	
 			@RequestMapping(method=RequestMethod.POST)
-			public ResponseEntity<Void> insert(@Valid @RequestBody MonitorDTO objDto) {
+			public ResponseEntity<Monitor> insert(@Valid @RequestBody MonitorDTO objDto) {
 				Monitor obj = service.fromDTO(objDto);
 				obj = service.insert(obj);
 				URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
